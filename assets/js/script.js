@@ -58,8 +58,10 @@ function checkAnswer(){
    let isCorrect = userAnswer  === calculatedAnswer[0];
    if (isCorrect){
        alert("Hey! You got it right!");
+      incrementScore();
    }else {
        alert(`Awww... you answered ${userAnswer}. The correct answer was ${calculatedAnswer}`);
+       incrementWrongAnswer();
    }
    runGame(calculatedAnswer[1]);
 }
@@ -97,11 +99,20 @@ function calculateCorrectAnswer(){
         throw `unimplemented operator ${operator}`;
    }
 }
+/**
+ * Get the current score from the DOM and increments it by 1
+ */
 function incrementScore(){
+  let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").textContent=++oldScore;
 
 }
+/**
+ * Get the current tally of inccorect score from the DOM and increments it by 1
+ */
 function incrementWrongAnswer(){
-
+let oldIncorrect = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText=++oldIncorrect;
 }
 function displayAddtionQuestion(operand1, operand2) {
    document.getElementById("operand1").textContent=operand1;
