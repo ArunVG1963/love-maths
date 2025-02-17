@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", function() {
 function runGame(gameType) {
 document.getElementById("answer-box").value="";
 document.getElementById("answer-box").focus();
-let num1=Math.floor(Math.random()*25)+1;
-let num2=Math.floor(Math.random()*25)+1;
+let num1=Math.floor(Math.random()*1000)+1;
+let num2=Math.floor(Math.random()*1000)+1;
 
   switch (gameType) {
    case "addition" :{
@@ -162,3 +162,10 @@ function displayDivisionQuestion(operand1, operand2) {
    document.getElementById("operator").textContent="/";
    
 }
+function refreshPage() {
+   let oldScore = parseInt(document.getElementById("score").innerText);
+    document.getElementById("score").textContent=0;
+    let oldIncorrect = parseInt(document.getElementById("incorrect").innerText);
+    document.getElementById("incorrect").innerText=0; 
+    runGame("addition");
+} 
